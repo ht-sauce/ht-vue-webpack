@@ -1,0 +1,9 @@
+{
+  "name": "@ht-vue-webpack/plugin",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+  },
+  "author": "ht-sauce",
+  "license": "MIT"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "ht-vue-webpack",
+  "version": "1.0.0",
+  "description": "个人webpack构建基础搭建，用以替代被官方抛弃的vuecli",
+  "main": "index.js",
+  "scripts": {
+  },
+  "workspaces": [
+    "play",
+    "plugin"
+  ],
+  "author": "ht-sauce",
+  "license": "MIT"
+}
