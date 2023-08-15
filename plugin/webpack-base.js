@@ -1,10 +1,10 @@
-const path = require('path')
+const { resolvePath } = require('./utils')
 const { VueLoaderPlugin } = require('vue-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
-
 const webpack = require('webpack')
+
 module.exports = {
   plugins: [
     // 请确保引入这个插件来施展魔法
@@ -22,8 +22,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'public'),
-          to: path.resolve(__dirname, 'dist'), // 输出目录
+          from: resolvePath('public'),
+          to: resolvePath('dist'), // 输出目录
           toType: 'dir',
           noErrorOnMissing: true,
           globOptions: {
@@ -47,7 +47,7 @@ module.exports = {
   output: {
     publicPath: '/vue-webpack', // 公共路径
     filename: 'js/[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'dist'), // 输出目录
+    path: resolvePath('dist'), // 输出目录
     clean: true,
   },
   devServer: {
@@ -64,7 +64,7 @@ module.exports = {
     },
     // 静态资源目录
     static: {
-      directory: path.resolve(__dirname, 'public'),
+      directory: resolvePath('public'),
       publicPath: '/vue-webpack',
     },
     // 代理
@@ -96,7 +96,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.jsx'],
     alias: {
-      '@': path.join(__dirname, './src'),
+      '@': resolvePath('./src'),
     },
   },
 
