@@ -1,0 +1,54 @@
+{
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "custom-types.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": ".",
+    "outDir": "./dist/",
+    "noImplicitThis": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "sourceMap": true,
+    // vue必须的配置
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    // 其他控制
+    "allowJs": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+    // 推荐的配置
+
+    /*  allowSyntheticDefaultImports 配置介绍
+当allowSyntheticDefaultImports 设置为true 的时候，允许下面的导入：
+import React from "react";
+用来替代:
+import * as React from "react";*/
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "useDefineForClassFields": true,
+
+    "lib": [
+      "ESNext", "DOM", "DOM.Iterable"
+      //没有“ScriptHost”，因为Vue 3放弃了对IE的支持,
+    ],
+    "types": [],
+
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  }
+}

@@ -2,13 +2,25 @@
   "name": "ht-vue-webpack",
   "version": "1.0.0",
   "description": "个人webpack构建基础搭建，用以替代被官方抛弃的vuecli",
-  "main": "index.js",
-  "scripts": {
-  },
   "workspaces": [
     "play",
     "plugin"
   ],
+  "scripts": {
+    "play:dev": "npm run dev -w play",
+    "play:build": "npm run build -w play",
+    "play:preview": "npm run preview -w play"
+  },
   "author": "ht-sauce",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "compression": "^1.7.4",
+    "copy-webpack-plugin": "^11.0.0",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
+    "play": "^0.5.0",
+    "prettier": "^3.0.1",
+    "typescript": "^5.1.6",
+    "webpack-dev-middleware": "^6.1.1"
+  }
 }
