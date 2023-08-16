@@ -1,5 +1,10 @@
 const path = require('path')
 
-export function resolvePath(pathRoute) {
+function resolvePath(pathRoute) {
+  // console.log(__dirname, '__dirname')
   return path.resolve(__dirname, pathRoute)
+}
+
+module.exports = {
+  resolvePath,
 }
