@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/vue-webpack'),
+  history: createWebHistory('/'),
   routes,
 })
 export default router

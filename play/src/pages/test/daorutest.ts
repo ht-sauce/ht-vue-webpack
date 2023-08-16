@@ -7,4 +7,5 @@ export function Forin() {
   for (let key in a) {
     console.log(key)
   }
+  // console.log(a?.c)
 }

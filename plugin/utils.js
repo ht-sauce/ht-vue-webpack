@@ -1,10 +1,20 @@
 const path = require('path')
 
+// 获取包文件的工作目录
+function getCWD() {
+  // 此方法返回一个字符串，该字符串指定node.js进程的当前工作目录。
+  return process.cwd()
+}
 function resolvePath(pathRoute) {
-  // console.log(__dirname, '__dirname')
-  return path.resolve(__dirname, pathRoute)
+  return path.resolve(getCWD(), pathRoute)
+}
+
+function rootToStrNull(pathStr = '') {
+  if (!pathStr || pathStr === '/') return ''
+  return pathStr
 }
 
 module.exports = {
+  rootToStrNull,
   resolvePath,
 }
