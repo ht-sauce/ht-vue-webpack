@@ -1,6 +1,6 @@
 {
   "name": "ht-vue-webpack",
-  "version": "1.0.0",
+  "version": "v1.0.0-beta.2",
   "private": false,
   "description": "个人webpack构建基础搭建，用以替代被官方抛弃的vuecli",
   "workspaces": [
