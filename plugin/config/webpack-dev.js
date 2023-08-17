@@ -1,6 +1,6 @@
 const baseConfig = require('./webpack-base')
 const { merge } = require('webpack-merge')
-const { rootToStrNull, resolvePath } = require('../utils')
+const { rootToStrNull, resolvePath } = require('../util/handlerPath.js')
 const configHandler = require('../configHandler')
 
 module.exports = function (cliOptions) {

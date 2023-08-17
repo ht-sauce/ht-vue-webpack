@@ -1,7 +1,9 @@
 <template>
   <RouterView />
 </template>
-<script lang="ts"></script>
+<script lang="ts">
+console.log(process.env.VUE_APP_BASE_API)
+</script>
 <style lang="scss">
 #app {
   width: 100%;

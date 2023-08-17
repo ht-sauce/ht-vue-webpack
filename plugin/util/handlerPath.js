@@ -8,6 +8,9 @@ function getCWD() {
 function resolvePath(pathRoute) {
   return path.resolve(getCWD(), pathRoute)
 }
+function joinPath(pathRoute) {
+  return path.join(getCWD(), pathRoute)
+}
 
 function rootToStrNull(pathStr = '') {
   if (!pathStr || pathStr === '/') return ''
@@ -17,4 +20,5 @@ function rootToStrNull(pathStr = '') {
 module.exports = {
   rootToStrNull,
   resolvePath,
+  joinPath,
 }

@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "webpack serve",
+    "dev": "webpack serve --mode development",
     "build": "webpack build --mode production",
     "preview": "node ./preview/serve.js"
   },

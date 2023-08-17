@@ -1,4 +1,4 @@
-const { resolvePath, rootToStrNull } = require('../utils')
+const { resolvePath, rootToStrNull } = require('../util/handlerPath.js')
 const { VueLoaderPlugin } = require('vue-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -7,6 +7,8 @@ const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const configHandler = require('../configHandler')
 const Dotenv = require('dotenv-webpack')
+const { getEnvPath } = require('../util/env')
+const { getMode } = require('../util/argv')
 
 /*
  * @param {Object} cliOptions合并配置
@@ -20,9 +22,7 @@ module.exports = (cliOptions = {}) => {
     {
       plugins: [
         new Dotenv({
-          path: resolvePath(`${extractConfig.env}/.env`),
-          safe: false,
-          allowedEmptyValues: true,
+          path: getEnvPath(cliOptions, getMode()),
         }),
         // 请确保引入这个插件
         new VueLoaderPlugin(),
