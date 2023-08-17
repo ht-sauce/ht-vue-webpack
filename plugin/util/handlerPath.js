@@ -18,6 +18,7 @@ function rootToStrNull(pathStr = '') {
 }
 
 module.exports = {
+  getCWD,
   rootToStrNull,
   resolvePath,
   joinPath,

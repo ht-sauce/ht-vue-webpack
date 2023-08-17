@@ -3,7 +3,11 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const proxy = require('http-proxy-middleware').createProxyMiddleware // 代理处理
 const app = express()
-const config = require('../webpack.config.js')
+const path = require('path')
+
+console.log(process.cwd())
+const config = require(path.join(process.cwd(), 'webpack.config.js'))
+
 const compiler = webpack(config)
 
 // 告知 express 使用 webpack-dev-middleware，
