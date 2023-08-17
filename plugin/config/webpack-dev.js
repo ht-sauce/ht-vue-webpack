@@ -7,9 +7,20 @@ module.exports = function (cliOptions) {
   const extractConfig = configHandler(cliOptions)
   return merge(baseConfig(cliOptions), {
     mode: 'development',
+    cache: true,
     devtool: 'inline-cheap-module-source-map',
     optimization: {
       runtimeChunk: 'single',
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
     },
     devServer: {
       host: '0.0.0.0',
