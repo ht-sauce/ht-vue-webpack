@@ -6,6 +6,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const configHandler = require('../configHandler')
+const Dotenv = require('dotenv-webpack')
 
 /*
  * @param {Object} cliOptions合并配置
@@ -18,7 +19,12 @@ module.exports = (cliOptions = {}) => {
   return merge(
     {
       plugins: [
-        // 请确保引入这个插件来施展魔法
+        new Dotenv({
+          path: resolvePath(`${extractConfig.env}/.env`),
+          safe: false,
+          allowedEmptyValues: true,
+        }),
+        // 请确保引入这个插件
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
           filename: 'css/[name].[contenthash].css',
@@ -53,6 +59,8 @@ module.exports = (cliOptions = {}) => {
         }),
       ],
       entry: './src/main', // 忽略后缀名
+      cache: true,
+
       output: {
         publicPath: extractConfig.publicPath, // 公共路径
         filename: 'js/[name].[chunkhash].js',
@@ -63,6 +71,18 @@ module.exports = (cliOptions = {}) => {
         extensions: ['.js', '.ts', '.tsx', '.jsx'],
         alias: {
           '@': resolvePath('./src'),
+        },
+      },
+      optimization: {
+        splitChunks: {
+          chunks: 'all',
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              chunks: 'all',
+            },
+          },
         },
       },
       module: {

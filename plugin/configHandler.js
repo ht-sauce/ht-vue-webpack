@@ -5,6 +5,7 @@
  * */
 module.exports = function (cliOptions = { extractConfig: {} }) {
   const baseConfig = {
+    env: './env', // 环境配置地址
     port: 8000, // 端口
     publicPath: '/', // 公共路径
     distDir: 'dist', // 输出目录
