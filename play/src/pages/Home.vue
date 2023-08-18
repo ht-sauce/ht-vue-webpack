@@ -8,12 +8,14 @@
   <div v-for="item in [1, 2, 3]" :key="item">
     <div>{{ item }}</div>
   </div>
+  <div class="test"></div>
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/test-in.scss';
 .img-style {
   margin-left: 20%;
   width: 100px;
-  height: 100px;
+  height: $test;
 }
 </style>
