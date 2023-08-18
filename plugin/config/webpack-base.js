@@ -10,6 +10,15 @@ const Dotenv = require('dotenv-webpack')
 const { getEnvPath } = require('../util/env')
 const { getMode } = require('../util/argv')
 
+const babelLoaderConf = {
+  loader: 'babel-loader',
+  options: {
+    presets: ['@babel/preset-env'],
+    plugins: ['@vue/babel-plugin-jsx'],
+    cacheDirectory: true, // babel编译后的内容默认缓存在 node_modules/.cache/babel-loader
+  },
+}
+
 /*
  * @param {Object} cliOptions合并配置
  * @param {Object} cliOptions.extractConfig 抽离配置，方便一些简单的配置，比如publicPath的配置，不然webpack的配置太繁琐了
@@ -95,16 +104,23 @@ module.exports = (cliOptions = {}) => {
             },
           },
           {
-            test: /\.(js|ts)x?$/,
+            test: /\.(ts|tsx)$/,
             exclude: /node_modules/,
             use: [
+              babelLoaderConf,
               {
-                loader: 'babel-loader',
+                loader: 'ts-loader',
                 options: {
-                  cacheDirectory: true,
+                  transpileOnly: true, // 关闭类型检查，即只进行转译
+                  appendTsSuffixTo: [/\.vue$/],
                 },
               },
             ],
+          },
+          {
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: [babelLoaderConf],
           },
           // css处理部分
           {
