@@ -6,6 +6,7 @@
   "description": "",
   "scripts": {},
   "author": "ht-sauce",
+  "homepage": "https://github.com/ht-sauce/vue-cli-webpack",
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.22.10",
