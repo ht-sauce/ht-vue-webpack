@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div>
     <router-link to="/test">测试页面2</router-link>
@@ -9,7 +7,11 @@
     <div>{{ item }}</div>
   </div>
   <div class="test"></div>
+  <TestJsx />
 </template>
+<script setup lang="ts">
+import TestJsx from './TestJsx.vue'
+</script>
 
 <style scoped lang="scss">
 @import '@/assets/config.scss';
