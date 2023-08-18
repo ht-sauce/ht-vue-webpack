@@ -1,5 +1,5 @@
 {
-  "name": "@ht-vue-webpack/plugin",
+  "name": "ht-vue-webpack-plugin",
   "private": false,
   "version": "1.0.0",
   "main": "index.js",
