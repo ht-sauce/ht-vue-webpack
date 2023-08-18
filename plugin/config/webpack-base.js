@@ -68,7 +68,7 @@ module.exports = (cliOptions = {}) => {
         clean: true,
       },
       resolve: {
-        extensions: ['.js', '.ts', '.tsx', '.jsx'],
+        extensions: ['.js', '.ts', '.tsx', '.jsx', '.vue'],
         alias: {
           '@': resolvePath('./src'),
         },
@@ -108,14 +108,19 @@ module.exports = (cliOptions = {}) => {
           },
           // css处理部分
           {
-            test: /\.(css|scss|sass|less)$/,
+            test: /\.css$/,
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+          },
+          {
+            test: /\.s[ac]ss$/i,
             use: [
               // 需要注意loader加载顺序
               // 'style-loader', // 顺序1，把css插入到head标签中
               MiniCssExtractPlugin.loader, // 顺序1，把css提取到单独的文件中
               'css-loader',
-              'sass-loader',
               'postcss-loader', // 顺序最后
+              // 将 Sass 编译成 CSS
+              'sass-loader',
             ],
           },
           // 静态资源处理部分

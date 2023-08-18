@@ -12,10 +12,21 @@
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/config.scss';
 @import '@/assets/test-in.scss';
 .img-style {
   margin-left: 20%;
   width: 100px;
   height: $test;
+}
+//.bed-type {
+//  margin-right: 16px;
+//}
+#{PrefixClass('form-item')} {
+  margin-bottom: 16px;
+  margin-right: 10px;
+  #{PrefixClass('form-item')} {
+    margin-bottom: 0;
+  }
 }
 </style>
