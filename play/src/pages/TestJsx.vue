@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { ref, reactive } from 'vue'
 import { defineComponent } from 'vue'
-/*type TCheckMenu = {
+type TCheckMenu = {
   show: boolean
   label: string
   prop: string
@@ -18,10 +18,10 @@ import { defineComponent } from 'vue'
   btnList?: any
   overFlowTip?: boolean
   showTabs?: (number | string)[] //展示tab数组
-}*/
+}
 export default defineComponent({
   setup() {
-    /*const tableData = ref<any[]>([])
+    const tableData = ref<any[]>([])
     const checkMenu = reactive<TCheckMenu[]>([
       {
         prop: 'ticketCode',
@@ -30,7 +30,7 @@ export default defineComponent({
 
         show: true,
       },
-    ])*/
+    ])
 
     return () => <div>这是jsx页面，需要展示测试jsx情况</div>
   },

@@ -13,7 +13,15 @@ const { getMode } = require('../util/argv')
 const babelLoaderConf = {
   loader: 'babel-loader',
   options: {
-    presets: ['@babel/preset-env'],
+    presets: [
+      '@babel/preset-env',
+      // [
+      //   '@babel/preset-typescript',
+      //   {
+      //     allExtensions: true, // 支持所有文件扩展名
+      //   },
+      // ],
+    ],
     plugins: ['@vue/babel-plugin-jsx'],
     cacheDirectory: true, // babel编译后的内容默认缓存在 node_modules/.cache/babel-loader
   },
@@ -112,7 +120,10 @@ module.exports = (cliOptions = {}) => {
                 loader: 'ts-loader',
                 options: {
                   transpileOnly: true, // 关闭类型检查，即只进行转译
-                  appendTsSuffixTo: [/\.vue$/],
+                  // 注意如果不用jsx则使用该配置，删除appendTsxSuffixTo，
+                  // appendTsSuffixTo: ['\\.vue$'],
+                  // 使用jsx则使用该配置，删除appendTsSuffixTo，
+                  appendTsxSuffixTo: ['\\.vue$'],
                 },
               },
             ],
@@ -131,6 +142,7 @@ module.exports = (cliOptions = {}) => {
             test: /\.s[ac]ss$/i,
             use: [
               // 需要注意loader加载顺序
+
               // 'style-loader', // 顺序1，把css插入到head标签中
               MiniCssExtractPlugin.loader, // 顺序1，把css提取到单独的文件中
               'css-loader',

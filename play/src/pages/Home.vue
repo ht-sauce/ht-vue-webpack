@@ -7,7 +7,7 @@
     <div>{{ item }}</div>
   </div>
   <div class="test">{{ testShow }}{{ JSON.stringify(checkMenu) }}</div>
-  <!--  <TestJsx />-->
+  <TestJsx />
   <HomeTestJsx title="测试jsx" />
 </template>
 <script setup lang="ts">
