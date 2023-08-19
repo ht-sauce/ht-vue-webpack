@@ -15,15 +15,17 @@ const { getMode, isBuild, isServe } = require('./util/argv')
 module.exports = (cliOptions = {}) => {
   // mode值代表了env文件的名称
   const mode = getMode()
+  if (typeof cliOptions === 'function') {
+    cliOptions = cliOptions({ mode, env: process.env })
+  }
+  // console.log(cliOptions)
+
   loaderEnv(cliOptions, mode) // 加载环境变量，首位
-  // console.log(process.env)
 
   // 内部判断是否生产构建，可以被webpackMergeConfig覆盖
   const build = isBuild()
   const serve = isServe()
-  if (typeof cliOptions === 'function') {
-    cliOptions = cliOptions({ mode, env: process.env })
-  }
+
   // 生产构建
   if (build) return webpackPrd(cliOptions)
   // dev运行
