@@ -1,8 +1,7 @@
 # vue-cli-webpack
 个人webpack构建基础搭建，用以替代被官方抛弃的vuecli
-## 使用方式
-引入@ht-vue-webpack/plugin
-## npm
+## 使用方式和npm
+小伙伴也可以查看源代码，自己搭建，这里只是提供一个基础的构建方式，方便大家快速搭建项目
 ```shell
 npm i ht-vue-webpack-plugin -D
 ```
