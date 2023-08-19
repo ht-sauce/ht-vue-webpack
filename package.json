@@ -1,5 +1,5 @@
 {
-  "name": "vue-cli-webpack",
+  "name": "ht-vue-webpack",
   "private": true,
   "description": "个人webpack构建基础搭建，用以替代被官方抛弃的vuecli",
   "workspaces": [
