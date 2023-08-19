@@ -1,7 +1,7 @@
 {
   "name": "ht-vue-webpack-plugin",
   "private": false,
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.5",
   "main": "index.js",
   "description": "",
   "scripts": {},
