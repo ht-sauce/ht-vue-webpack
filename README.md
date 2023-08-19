@@ -58,5 +58,14 @@ module.exports = function (cliOptions = { extractConfig: {} }) {
   }
 }
 ```
+## 区分环境
+通过配置文件env指定读取文件所在地址，默认读取根目录下env文件夹下的.env文件
+
+使用 --mode [文件名称] 指定文件下面读取的配置文件后即可使用process.env.[自定义变量]
+
+关于构建和打包，除非使用webpackMergeConfig进行改变webpack内mode变量，否则构建的时候采用区分webpack serve或build方式进行区分构建生产还是运行开发环境
+
+不会再出现vuecli那种会修改到NODE.ENV的情况，同时我这里也没有NODE.ENV
 ## 核心原理
 提供webpack基本配置，通过webpack-merge合并用户配置，最后返回webpack配置
+
