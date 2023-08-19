@@ -2,10 +2,13 @@
 个人webpack构建基础搭建，用以替代被官方抛弃的vuecli
 ## 使用方式
 引入@ht-vue-webpack/plugin
-
+## npm
+```shell
+npm i ht-vue-webpack-plugin -D
+```
 在项目根目录下创建webpack.config.js
 ```javascript
-const webpackBase = require('@ht-vue-webpack/plugin')
+const webpackBase = require('ht-vue-webpack-plugin')
 // mode是你--mode后面的参数，env是你的环境参数
 // 入参可以是一个函数也可以是一个对象
 module.exports = webpackBase((mode, env = process.env) => {
