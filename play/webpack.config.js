@@ -4,6 +4,7 @@ module.exports = webpackBase(() => {
   return {
     extractConfig: {
       port: 5000,
+      gzip: false,
     },
   }
 })

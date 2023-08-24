@@ -6,6 +6,7 @@
 module.exports = function (cliOptions = { extractConfig: {} }) {
   const baseConfig = {
     env: './env', // 环境配置地址
+    gzip: false, // 是否开启gzip
     port: 8000, // 端口
     publicPath: '/', // 公共路径
     distDir: 'dist', // 输出目录
