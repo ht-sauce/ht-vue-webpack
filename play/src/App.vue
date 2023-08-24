@@ -2,7 +2,7 @@
   <RouterView />
 </template>
 <script lang="ts">
-console.log(process.env.VUE_APP_BASE_API)
+console.log(process.env.VUE_APP_BASE_API, 122)
 </script>
 <style lang="scss">
 #app {

@@ -2,10 +2,11 @@ const baseConfig = require('./webpack-base')
 const { merge } = require('webpack-merge')
 const { rootToStrNull, resolvePath } = require('../util/handlerPath.js')
 const configHandler = require('../configHandler')
-
+const PrintLog = require('../webpack-plugin/PrintLog')
 module.exports = function (cliOptions) {
   const extractConfig = configHandler(cliOptions)
   return merge(baseConfig(cliOptions), {
+    plugins: [new PrintLog()],
     mode: 'development',
     devtool: 'inline-cheap-module-source-map',
     optimization: {
