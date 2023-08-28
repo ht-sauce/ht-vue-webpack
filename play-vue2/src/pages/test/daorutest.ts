@@ -4,7 +4,7 @@ export function Forin() {
     a: 1,
     2: 2,
   }
-  for (let key in a) {
+  for (const key in a) {
     console.log(key)
   }
   // console.log(a?.c)
