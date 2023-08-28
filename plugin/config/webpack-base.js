@@ -52,6 +52,7 @@ module.exports = (cliOptions = {}) => {
           new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash].css',
             chunkFilename: 'css/[id].[contenthash].css',
+            ignoreOrder: true,
           }),
           // 注入的全局变量
           new webpack.DefinePlugin({
@@ -82,7 +83,7 @@ module.exports = (cliOptions = {}) => {
           }),
           new webpack.ProgressPlugin({
             handler(percentage, message, ...args) {
-              console.info((percentage * 100).toFixed(2), message, ...args)
+              console.info((percentage * 100).toFixed(2) + '%', message, ...args)
             },
           }),
         ],
