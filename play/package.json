@@ -28,5 +28,8 @@
     "lint-staged": "^14.0.0",
     "npm": "^9.8.1",
     "prettier": "^3.0.2"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
   }
 }
