@@ -1,1 +1,76 @@
-[项目使用方式](https://github.com/ht-sauce/ht-vue-webpack)
+_# vue-cli-webpack
+个人webpack构建基础搭建，用以替代被官方抛弃的vuecli
+## 使用方式和npm
+小伙伴也可以查看源代码，自己搭建，这里只是提供一个基础的构建方式，方便大家快速搭建项目
+```shell
+npm i ht-vue-webpack-plugin -D
+```
+在项目根目录下创建webpack.config.js
+```javascript
+const webpackBase = require('ht-vue-webpack-plugin')
+// mode是你--mode后面的参数，env是你的环境参数
+// 入参可以是一个函数也可以是一个对象
+module.exports = webpackBase((mode, env = process.env) => {
+  return {
+      // 工具包抽离的配置
+      extractConfig: {
+          // 请看下方默认值
+      },
+      // 最终通过webpack-merge合并的配置
+      webpackMergeConfig: {
+          // 参考webpack官方文档
+      }
+  }
+})
+```
+package.json中添加
+```json
+{
+  "scripts": {
+    "dev": "webpack serve --mode development", // 开发环境
+    "build": "webpack build --mode production", // 生产环境
+    // eslint检测
+    "lint": "eslint play --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+  }
+}
+```
+webpackBase入参文件参考，以下为默认配置
+```javascript  
+/*
+ * @param {Object} cliOptions合并配置
+ * @param {Object} cliOptions.extractConfig 抽离配置，方便一些简单的配置，比如publicPath的配置，不然webpack的配置太繁琐了
+ * @param {Object} cliOptions.webpackMergeConfig 通过webpack-merge合并的配置，会覆盖extractConfig传入的数据
+ * */
+module.exports = function (cliOptions = { extractConfig: {} }) {
+  const baseConfig = {
+  // 环境配置地址，在webpackBase执行的时候会运行dotenv包，加载配置文件参数，使用process.env.{你的参数}
+  // 默认从根目录下的.env文件中加载环境变量配置，配置方式参考vuecli方式
+    env: './env',
+    port: 8000, // 端口
+    publicPath: '/', // 公共路径，和vuecli一样
+    distDir: 'dist', // 输出目录
+    publicDir: 'public', // 静态资源目录
+    sourceMap: true, // 生产是否开启 sourceMap
+  }
+  return {
+    ...baseConfig,
+    ...cliOptions.extractConfig,
+  }
+}
+```
+## 区分环境
+通过配置文件env指定读取文件所在地址，默认读取根目录下env文件夹下的.env文件
+
+使用 --mode [文件名称] 指定文件下面读取的配置文件后即可使用process.env.[自定义变量]
+
+关于构建和打包，除非使用webpackMergeConfig进行改变webpack内mode变量，否则构建的时候采用区分webpack serve或build方式进行区分构建生产还是运行开发环境
+
+不会再出现vuecli那种会修改到NODE.ENV的情况，同时我这里也没有NODE.ENV
+## 核心原理
+提供webpack基本配置，通过webpack-merge合并用户配置，最后返回webpack配置
+## vue2的使用
+安装vue-loader@15.x 版本
+```shell
+npm i vue-loader@15.x -D -w play-vue2
+```_
+
