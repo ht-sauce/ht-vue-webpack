@@ -42,11 +42,6 @@ module.exports = function (cliOptions) {
       hot: 'only', // 防止 error 导致整个页面刷新
       open: false, // 不打开浏览器
       client: {
-        overlay: {
-          errors: true,
-          warnings: true,
-        },
-        logging: 'warn',
         progress: true,
       },
     },

@@ -80,6 +80,11 @@ module.exports = (cliOptions = {}) => {
           new HtmlWebpackPlugin({
             template: `./${extractConfig.publicDir}/index.html`,
           }),
+          new webpack.ProgressPlugin({
+            handler(percentage, message, ...args) {
+              console.info((percentage * 100).toFixed(2), message, ...args)
+            },
+          }),
         ],
         entry: './src/main', // 忽略后缀名
         cache: true,
