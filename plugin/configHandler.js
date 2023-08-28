@@ -5,6 +5,10 @@
  * */
 module.exports = function (cliOptions = { extractConfig: {} }) {
   const baseConfig = {
+    /*是否使用vue2
+     * 当使用vue2需要手动设置vueJsx和vue-loader15办
+     * */
+    vue2: false,
     env: './env', // 环境配置地址
     gzip: false, // 是否开启gzip
     port: 8000, // 端口

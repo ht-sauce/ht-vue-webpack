@@ -10,21 +10,17 @@ const Dotenv = require('dotenv-webpack')
 const { getEnvPath } = require('../util/env')
 const { getMode } = require('../util/argv')
 
-const babelLoaderConf = {
-  loader: 'babel-loader',
-  options: {
-    presets: [
-      '@babel/preset-env',
-      // [
-      //   '@babel/preset-typescript',
-      //   {
-      //     allExtensions: true, // 支持所有文件扩展名
-      //   },
-      // ],
-    ],
-    plugins: ['@vue/babel-plugin-jsx'],
-    cacheDirectory: true, // babel编译后的内容默认缓存在 node_modules/.cache/babel-loader
-  },
+const babelLoaderConf = (extractConfig) => {
+  return {
+    loader: 'babel-loader',
+    options: {
+      presets: extractConfig.vue2
+        ? ['@babel/preset-env', '@vue/babel-preset-jsx']
+        : ['@babel/preset-env'],
+      plugins: extractConfig.vue2 ? [] : ['@vue/babel-plugin-jsx'],
+      cacheDirectory: true, // babel编译后的内容默认缓存在 node_modules/.cache/babel-loader
+    },
+  }
 }
 
 /*
@@ -42,7 +38,7 @@ module.exports = (cliOptions = {}) => {
           path: getEnvPath(cliOptions, getMode()),
         }),
         // 请确保引入这个插件
-        new VueLoaderPlugin(),
+        extractConfig.vue2 ? false : new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
           filename: 'css/[name].[contenthash].css',
           chunkFilename: 'css/[id].[contenthash].css',
@@ -115,7 +111,7 @@ module.exports = (cliOptions = {}) => {
             test: /\.(ts|tsx)$/,
             exclude: /node_modules/,
             use: [
-              babelLoaderConf,
+              babelLoaderConf(extractConfig),
               {
                 loader: 'ts-loader',
                 options: {
@@ -131,7 +127,7 @@ module.exports = (cliOptions = {}) => {
           {
             test: /\.(js|jsx)$/,
             exclude: /node_modules/,
-            use: [babelLoaderConf],
+            use: [babelLoaderConf(extractConfig)],
           },
           // css处理部分
           {

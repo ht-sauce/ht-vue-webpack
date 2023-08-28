@@ -68,4 +68,9 @@ module.exports = function (cliOptions = { extractConfig: {} }) {
 不会再出现vuecli那种会修改到NODE.ENV的情况，同时我这里也没有NODE.ENV
 ## 核心原理
 提供webpack基本配置，通过webpack-merge合并用户配置，最后返回webpack配置
+## vue2的使用
+安装vue-loader@15.x 版本
+```shell
+npm i vue-loader@15.x -D -w play-vue2
+```
 

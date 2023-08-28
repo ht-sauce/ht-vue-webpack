@@ -4,12 +4,16 @@
   "description": "个人webpack构建基础搭建，用以替代被官方抛弃的vuecli",
   "workspaces": [
     "play",
-    "plugin"
+    "plugin",
+    "play-vue2"
   ],
   "scripts": {
     "play:dev": "npm run dev -w play",
     "play:build": "npm run build -w play",
-    "play:preview": "npm run preview -w play"
+    "play:preview": "npm run preview -w play",
+    "play-vue2:dev": "npm run dev -w play-vue2",
+    "play-vue2:build": "npm run build -w play-vue2",
+    "play-vue2:preview": "npm run preview -w play-vue2"
   },
   "author": "ht-sauce",
   "license": "MIT",

@@ -1,0 +1,17 @@
+$namespace: 'mbs-web' !default;
+
+/*
+//示例原样式类el-form
+#{PrefixClass('form')} {
+  #{PrefixClass('form-item__label')} {
+    color: var(--text-color-primary);
+  }
+}
+*/
+@function PrefixClass($classname) {
+  @return '.' + $namespace + '-' + $classname
+}
+@function PrefixCssVar($classname) {
+  @return '--' + $namespace + '-' + $classname
+}
+
