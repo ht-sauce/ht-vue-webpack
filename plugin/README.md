@@ -1,5 +1,9 @@
 _# vue-cli-webpack
 个人webpack构建基础搭建，用以替代被官方抛弃的vuecli
+
+不了解的可以访问项目https://github.com/ht-sauce/ht-vue-webpack/tree/main
+
+其中play文件为vue3版本，play-vue2为vue2版本，可以参考
 ## 使用方式和npm
 小伙伴也可以查看源代码，自己搭建，这里只是提供一个基础的构建方式，方便大家快速搭建项目
 ```shell
@@ -71,6 +75,23 @@ module.exports = function (cliOptions = { extractConfig: {} }) {
 ## vue2的使用
 安装vue-loader@15.x 版本
 ```shell
-npm i vue-loader@15.x -D -w play-vue2
-```_
+npm i vue-loader@15.x -D
+```
+配置文件修改
+```javascript
+const webpackBase = require('ht-vue-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
+module.exports = webpackBase(() => {
+    return {
+        webpackMergeConfig: {
+            plugins: [new VueLoaderPlugin()], // 修改插件
+        },
+        extractConfig: {
+            vue2: true, // 需要开启
+            port: 5000,
+            gzip: false,
+        },
+    }
+})
+```
 
