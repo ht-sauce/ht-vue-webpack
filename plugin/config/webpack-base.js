@@ -52,7 +52,7 @@ module.exports = (cliOptions = {}) => {
           new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash].css',
             chunkFilename: 'css/[id].[contenthash].css',
-            ignoreOrder: true,
+            // ignoreOrder: true,
           }),
           // 注入的全局变量
           new webpack.DefinePlugin({
@@ -174,23 +174,33 @@ module.exports = (cliOptions = {}) => {
             },
             // 静态资源处理部分
             {
-              test: /\.(eot|svg|ttf|woff|)$/,
+              // svg不可以base64编码，影响实际图片展示
+              test: /\.(svg)(\?.*)?$/,
               type: 'asset/resource',
+              generator: {
+                filename: 'img/[name].[hash:8][ext]',
+              },
+            },
+            {
+              test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
+              type: 'asset',
               generator: {
                 filename: 'fonts/[name].[hash:8][ext]',
               },
             },
             {
-              test: /\.(png|jpe?g|gif|svg|webp)(\?.*)?$/,
+              test: /\.(png|jpe?g|gif|webp|avif)(\?.*)?$/,
               type: 'asset',
               generator: {
                 // [ext]前面自带"."
-                filename: 'assets/[name].[hash:8][ext]',
+                filename: 'img/[name].[hash:8][ext]',
               },
-              parser: {
-                dataUrlCondition: {
-                  maxSize: 4 * 1024, // 4kb
-                },
+            },
+            {
+              test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+              type: 'asset',
+              generator: {
+                filename: 'media/[name].[hash:8][ext]',
               },
             },
           ],

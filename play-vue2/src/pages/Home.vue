@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ElTableList />
     <router-link to="/test">测试页面2</router-link>
 
     <img class="img-style" src="@/assets/1689044096720.jpg" alt="" />
@@ -12,6 +13,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import ElTableList from './ElTableList.vue'
 import TestJsx from './TestJsx.vue'
 import { ref } from 'vue'
 import HomeTestJsx from './HomeTestJsx'

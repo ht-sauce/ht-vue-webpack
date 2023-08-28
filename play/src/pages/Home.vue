@@ -2,6 +2,7 @@
   <div>
     <router-link to="/test">测试页面2</router-link>
   </div>
+  <TestTable />
   <img class="img-style" src="@/assets/1689044096720.jpg" alt="" />
   <div v-for="item in [1, 2, 3]" :key="item">
     <div>{{ item }}</div>
@@ -11,6 +12,7 @@
   <HomeTestJsx title="测试jsx" />
 </template>
 <script setup lang="ts">
+import TestTable from './TestTable.vue'
 import TestJsx from './TestJsx.vue'
 import { ref, reactive } from 'vue'
 import HomeTestJsx from './HomeTestJsx'

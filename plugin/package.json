@@ -27,6 +27,7 @@
     "postcss-loader": "^7.3.3",
     "sass": "^1.65.1",
     "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
     "vue-loader": "^17.2.2",
