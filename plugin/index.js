@@ -11,6 +11,7 @@ const { getMode, isBuild, isServe } = require('./util/argv')
  * @param {Object} cliOptions合并配置
  * @param {Object} cliOptions.extractConfig 抽离配置，方便一些简单的配置，比如publicPath的配置，不然webpack的配置太繁琐了
  * @param {Object} cliOptions.webpackMergeConfig 通过webpack-merge合并的配置，会覆盖extractConfig传入的数据
+ * @param {Function} cliOptions.finalWebpackOptions 项目的publicPath
  * */
 module.exports = (cliOptions = {}) => {
   // mode值代表了env文件的名称

@@ -23,6 +23,12 @@ module.exports = webpackBase((mode, env = process.env) => {
       // 最终通过webpack-merge合并的配置
       webpackMergeConfig: {
           // 参考webpack官方文档
+      },
+      // 最终webpack配置完成后的回调，会返回最终的webpack配置
+      // 可以不定义，定义的话会返回最终的webpack配置
+      finalWebpackOptions: (finalConfig) => {
+          // 一定要最终进行返回
+          return finalConfig
       }
   }
 })
