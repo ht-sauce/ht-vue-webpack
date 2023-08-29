@@ -16,7 +16,7 @@ module.exports = function (cliOptions = { extractConfig: {} }) {
     distDir: 'dist', // 输出目录
     publicDir: 'public', // 静态资源目录
     sourceMap: true, // 是否开启 sourceMap
-    runtimeCompiler: false, // 是否使用运行时编译器
+    runtimeCompiler: false, // vue是否使用运行时编译器
     // 一些必要的options配置，当无法处理的时候建议通过webpackMergeConfig或者finalWebpackOptions进行最终处理
     options: {
       sass: {
