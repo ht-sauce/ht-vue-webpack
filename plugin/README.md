@@ -45,6 +45,10 @@ package.json中添加
 }
 ```
 webpackBase入参文件参考，以下为默认配置
+
+实际情况请以
+[configHandler.js](https://github.com/ht-sauce/ht-vue-webpack/blob/main/plugin/configHandler.js)
+为准
 ```javascript  
 /*
  * @param {Object} cliOptions合并配置
@@ -52,20 +56,39 @@ webpackBase入参文件参考，以下为默认配置
  * @param {Object} cliOptions.webpackMergeConfig 通过webpack-merge合并的配置，会覆盖extractConfig传入的数据
  * */
 module.exports = function (cliOptions = { extractConfig: {} }) {
-  const baseConfig = {
-  // 环境配置地址，在webpackBase执行的时候会运行dotenv包，加载配置文件参数，使用process.env.{你的参数}
-  // 默认从根目录下的.env文件中加载环境变量配置，配置方式参考vuecli方式
-    env: './env',
-    port: 8000, // 端口
-    publicPath: '/', // 公共路径，和vuecli一样
-    distDir: 'dist', // 输出目录
-    publicDir: 'public', // 静态资源目录
-    sourceMap: true, // 生产是否开启 sourceMap
-  }
-  return {
-    ...baseConfig,
-    ...cliOptions.extractConfig,
-  }
+    const baseConfig = {
+        /*是否使用vue2
+         * 当使用vue2需要手动设置vueJsx和vue-loader15办
+         * */
+        vue2: false,
+        env: './env', // 环境配置地址
+        gzip: false, // 是否开启gzip
+        port: 8000, // 端口
+        publicPath: '/', // 公共路径
+        distDir: 'dist', // 输出目录
+        publicDir: 'public', // 静态资源目录
+        sourceMap: true, // 是否开启 sourceMap
+        isPrd: false, // 是否是生产环境
+        runtimeCompiler: false, // 是否使用运行时编译器
+        // 一些必要的options配置，当无法处理的时候建议通过webpackMergeConfig或者finalWebpackOptions进行最终处理
+        options: {
+            sass: {
+                // additionalData: `
+                //     @use "~@/styles/element/index.scss" as *; // 按需加载修改主题色
+                //   `,
+            },
+            // vue-loader
+            vue: {},
+            // ts-loader
+            ts: {},
+            // babel-loader
+            babel: {}
+        },
+    }
+    return {
+        ...baseConfig,
+        ...cliOptions.extractConfig,
+    }
 }
 ```
 ## 区分环境

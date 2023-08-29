@@ -20,6 +20,7 @@ const babelLoaderConf = (extractConfig) => {
         : ['@babel/preset-env'],
       plugins: extractConfig.vue2 ? [] : ['@vue/babel-plugin-jsx'],
       cacheDirectory: true, // babel编译后的内容默认缓存在 node_modules/.cache/babel-loader
+      ...extractConfig.options.babel,
     },
   }
 }
@@ -125,6 +126,7 @@ module.exports = (cliOptions = {}) => {
               loader: 'vue-loader',
               options: {
                 reactivityTransform: true,
+                ...extractConfig.options.vue,
               },
             },
             {
@@ -140,6 +142,7 @@ module.exports = (cliOptions = {}) => {
                     // appendTsSuffixTo: ['\\.vue$'],
                     // 使用jsx则使用该配置，删除appendTsSuffixTo，
                     appendTsxSuffixTo: ['\\.vue$'],
+                    ...extractConfig.options.ts,
                   },
                 },
               ],
@@ -172,6 +175,7 @@ module.exports = (cliOptions = {}) => {
                     sassOptions: {
                       outputStyle: 'expanded',
                     },
+                    ...extractConfig.options.sass,
                   },
                 },
               ],

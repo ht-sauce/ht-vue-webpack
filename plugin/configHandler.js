@@ -18,6 +18,20 @@ module.exports = function (cliOptions = { extractConfig: {} }) {
     sourceMap: true, // 是否开启 sourceMap
     isPrd: false, // 是否是生产环境
     runtimeCompiler: false, // 是否使用运行时编译器
+    // 一些必要的options配置，当无法处理的时候建议通过webpackMergeConfig或者finalWebpackOptions进行最终处理
+    options: {
+      sass: {
+        // additionalData: `
+        //     @use "~@/styles/element/index.scss" as *; // 按需加载修改主题色
+        //   `,
+      },
+      // vue-loader
+      vue: {},
+      // ts-loader
+      ts: {},
+      // babel-loader
+      babel: {},
+    },
   }
   return {
     ...baseConfig,

@@ -6,5 +6,9 @@ module.exports = webpackBase(() => {
       port: 5500,
       gzip: false,
     },
+    finalWebpackOptions(config) {
+      console.log('finalWebpackOptions', config)
+      return config
+    },
   }
 })
