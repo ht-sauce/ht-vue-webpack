@@ -12,14 +12,14 @@ module.exports = class PrintLog {
       const IPv4 = getIp().IPv4
 
       // console.log(stats.compilation)
-      const port = stats.compilation.options?.devServer?.port
+      const port = (stats.compilation.options?.devServer?.port).toString()
       const publicPath = rootToStrNull(stats.compilation.options?.output?.publicPath)
 
       // 延迟输出，让提示信息在最后输出
       setTimeout(() => {
         console.log('服务地址')
-        console.log(`本地：http://localhost:${port}/${publicPath}`)
-        console.log(`IPV4：http://${IPv4}:${port}/${publicPath}`)
+        console.log(`本地：http://localhost:${port + publicPath}`)
+        console.log(`IPV4：http://${IPv4}:${port + publicPath}`)
       })
     })
   }
