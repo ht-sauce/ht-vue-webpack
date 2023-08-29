@@ -7,7 +7,7 @@ module.exports = webpackBase(() => {
     },
     extractConfig: {
       vue2: true,
-      port: 5000,
+      port: 5100,
       gzip: false,
     },
   }
