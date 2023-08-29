@@ -9,6 +9,7 @@ const configHandler = require('../configHandler')
 const Dotenv = require('dotenv-webpack')
 const { getEnvPath } = require('../util/env')
 const { getMode } = require('../util/argv')
+const { vueEsm } = require('../util/vueTool')
 
 const babelLoaderConf = (extractConfig) => {
   return {
@@ -100,6 +101,9 @@ module.exports = (cliOptions = {}) => {
           extensions: ['.js', '.ts', '.tsx', '.jsx', '.vue'],
           alias: {
             '@': resolvePath('./src'),
+            // runtimeCompiler, 是否使用包含运行时编译器的 Vue 构建版本
+            // 同时解决el-table渲染不出来的问题
+            vue$: vueEsm(extractConfig.vue2, extractConfig.runtimeCompiler),
           },
         },
         optimization: {
