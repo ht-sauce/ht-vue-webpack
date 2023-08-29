@@ -53,7 +53,7 @@ module.exports = (cliOptions = {}) => {
           new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash].css',
             chunkFilename: 'css/[id].[contenthash].css',
-            // ignoreOrder: true,
+            ignoreOrder: true,
           }),
           // 注入的全局变量
           new webpack.DefinePlugin({
