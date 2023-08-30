@@ -180,6 +180,20 @@ module.exports = (cliOptions = {}) => {
                 },
               ],
             },
+            {
+              test: /\.less$/i,
+              use: [
+                MiniCssExtractPlugin.loader,
+                'css-loader',
+                'postcss-loader', // 顺序最后
+                {
+                  loader: 'less-loader',
+                  options: {
+                    ...extractConfig.options.less,
+                  },
+                },
+              ],
+            },
             // 静态资源处理部分
             {
               // svg不可以base64编码，影响实际图片展示

@@ -4,6 +4,14 @@ _# vue-cli-webpack
 不了解的可以访问项目https://github.com/ht-sauce/ht-vue-webpack/tree/main
 
 其中play文件为vue3版本，play-vue2为vue2版本，可以参考
+
+包本身支持情况
+- vue2  参考vue2配置改动
+- vue2-jsx 默认安装'@babel/preset-env', '@vue/babel-preset-jsx'
+- vue3-jsx 默认安装'@babel/preset-env'，'@vue/babel-plugin-jsx'
+- sass 会默认安装sass和sass-loader
+- less 需要手动安装less和less-loader
+- 支持env环境变量配置
 ## 使用方式和npm
 小伙伴也可以查看源代码，自己搭建，这里只是提供一个基础的构建方式，方便大家快速搭建项目
 ```shell
@@ -71,11 +79,14 @@ module.exports = function (cliOptions = { extractConfig: {} }) {
         runtimeCompiler: false, // 是否使用运行时编译器
         // 一些必要的options配置，当无法处理的时候建议通过webpackMergeConfig或者finalWebpackOptions进行最终处理
         options: {
+            // 请安装sass,sass-loader
             sass: {
                 // additionalData: `
                 //     @use "~@/styles/element/index.scss" as *; // 按需加载修改主题色
                 //   `,
             },
+            // 请安装less,less-loader
+            less: {},
             // vue-loader
             vue: {},
             // ts-loader
